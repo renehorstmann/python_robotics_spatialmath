@@ -1,5 +1,7 @@
 # Spatial Maths for Python
 
+> THIS IS A FORK TO ADD IN SOME FEATUES LIKE REMOVING CHECKS FOR POSES, ETC.
+
 [![A Python Robotics Package](https://raw.githubusercontent.com/petercorke/robotics-toolbox-python/master/.github/svg/py_collection.min.svg)](https://github.com/petercorke/robotics-toolbox-python)
 [![QUT Centre for Robotics Open Source](https://github.com/qcr/qcr.github.io/raw/master/misc/badge.svg)](https://qcr.github.io)
 

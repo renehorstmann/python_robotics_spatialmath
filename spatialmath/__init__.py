@@ -1,7 +1,5 @@
 # print("in spatialmath/__init__")
 
-print("Hello forked world :D")
-
 from spatialmath.pose2d import SO2, SE2
 from spatialmath.pose3d import SO3, SE3
 from spatialmath.baseposematrix import BasePoseMatrix
