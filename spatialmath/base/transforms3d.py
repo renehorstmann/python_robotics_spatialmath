@@ -19,6 +19,7 @@ from collections.abc import Iterable
 import math
 import numpy as np
 
+from spatialmath import use_checks
 from spatialmath.base.argcheck import getunit, getvector, isvector, isscalar, ismatrix
 from spatialmath.base.vectors import (
     unitvec,
@@ -380,7 +381,7 @@ def ishom(T: Any, check: bool = False, tol: float = 20) -> bool:
         isinstance(T, np.ndarray)
         and T.shape == (4, 4)
         and (
-            not check
+            not (use_checks and check)
             or (isR(T[:3, :3], tol=tol) and all(T[3, :] == np.array([0, 0, 0, 1])))
         )
     )

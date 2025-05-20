@@ -26,6 +26,11 @@ import numpy as np
 import spatialmath.base as smb
 from spatialmath.baseposematrix import BasePoseMatrix
 
+#
+# disable (or enable again, cause default is off) primitive checks
+#
+from spatialmath.base import use_checks
+
 # ============================== SO2 =====================================#
 
 
@@ -164,7 +169,7 @@ class SO2(BasePoseMatrix):
 
         :seealso: :func:`~spatialmath.base.transform3d.isrot`
         """
-        return not check or smb.isrot2(x, check=True)
+        return not (use_checks and check) or smb.isrot2(x, check=True)
 
     def inv(self):
         """
@@ -506,7 +511,7 @@ class SE2(SO2):
 
         :seealso: :func:`~spatialmath.base.transform2d.ishom`
         """
-        return not check or smb.ishom2(x, check=True)
+        return not (use_checks and check) or smb.ishom2(x, check=True)
 
     @property
     def t(self):

@@ -22,6 +22,12 @@ from spatialmath.base.vectors import iszerovec, unitvec_norm
 # from spatialmath.base.transforms2d import transl2
 
 
+#
+# disable (or enable again, cause default is off) primitive checks
+#
+from spatialmath.base import use_checks
+
+
 try:  # pragma: no cover
     # print('Using SymPy')
     from sympy import Matrix
@@ -88,7 +94,7 @@ def r2t(R, check=False):
         # numeric matrix
         if not isinstance(R, np.ndarray):
             raise ValueError("Argument must be a NumPy array")
-        if check and not isR(R):
+        if (use_checks and check) and not isR(R):
             raise ValueError("Invalid SO(3) matrix ")
 
         # T = np.pad(R, (0, 1), mode='constant')
@@ -153,7 +159,7 @@ def t2r(T: SEnArray, check: bool = False) -> SOnArray:
     else:
         raise ValueError("Value must be an SE(3) matrix")
 
-    if check and not isR(R):
+    if (use_checks and check) and not isR(R):
         raise ValueError("Invalid rotation submatrix")
 
     return R

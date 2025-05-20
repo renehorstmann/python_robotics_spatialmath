@@ -7,6 +7,10 @@ import spatialmath.base as smb
 from spatialmath.baseposelist import BasePoseList
 from spatialmath.geom3d import Line3
 
+#
+# disable (or enable again, cause default is off) primitive checks
+#
+from spatialmath.base import use_checks
 
 class BaseTwist(BasePoseList):
     """
@@ -392,7 +396,7 @@ class Twist3(BaseTwist):
                 return False
             if not smb.iszerovec(v[3, :]):  # check bottom row is zero
                 return False
-            if check and not smb.isskew(v[:3, :3]):
+            if (use_checks and check) and not smb.isskew(v[:3, :3]):
                 # top left 3x3 is skew symmetric
                 return False
             return True
@@ -1355,7 +1359,7 @@ class Twist2(BaseTwist):
                 return False
             if not smb.iszerovec(v[2, :]):  # check bottom row is zero
                 return False
-            if check and not smb.isskew(v[:2, :2]):
+            if (use_checks and check) and not smb.isskew(v[:2, :2]):
                 # top left 2x2 is skew symmetric
                 return False
             return True

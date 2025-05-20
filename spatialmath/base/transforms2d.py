@@ -30,6 +30,11 @@ from spatialmath.base.types import *
 from spatialmath.base.transformsNd import rt2tr
 from spatialmath.base.vectors import unitvec
 
+#
+# disable (or enable again, cause default is off) primitive checks
+#
+from spatialmath.base import use_checks
+
 _eps = np.finfo(np.float64).eps
 
 try:  # pragma: no cover
@@ -359,7 +364,7 @@ def ishom2(T: Any, check: bool = False, tol: float = 20) -> bool:  # TypeGuard(S
         isinstance(T, np.ndarray)
         and T.shape == (3, 3)
         and (
-            not check
+            not (use_checks and check)
             or (smb.isR(T[:2, :2], tol=tol) and all(T[2, :] == np.array([0, 0, 1])))
         )
     )
@@ -398,7 +403,7 @@ def isrot2(R: Any, check: bool = False, tol: float = 20) -> bool:  # TypeGuard(S
     return (
         isinstance(R, np.ndarray)
         and R.shape == (2, 2)
-        and (not check or smb.isR(R, tol=tol))
+        and (not (use_checks and check) or smb.isR(R, tol=tol))
     )
 
 

@@ -11,6 +11,12 @@ import numpy as np
 from spatialmath.base.argcheck import isnumberlist, isscalar
 from spatialmath.base.types import *
 
+#
+# disable (or enable again, cause default is off) primitive checks
+#
+from spatialmath.base import use_checks
+
+
 _numtypes = (int, np.int64, float, np.float64)
 
 
@@ -79,7 +85,7 @@ class BasePoseList(UserList, ABC):
         pass
 
     def _import(self, x, check=True):
-        if not check or self.isvalid(x, check=check):
+        if not (use_checks and check) or self.isvalid(x, check=check):
             return x
         else:
             return None

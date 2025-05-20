@@ -2,6 +2,12 @@
 # Copyright (c) 2000 Peter Corke
 # MIT Licence, see details in top-level file: LICENCE
 
+
+#
+# disable (or enable again, cause default is off) primitive checks
+#
+use_checks: bool = False
+
 from spatialmath.base.argcheck import *  # lgtm [py/polluting-import]
 from spatialmath.base.quaternions import *  # lgtm [py/polluting-import]
 from spatialmath.base.transforms2d import *  # lgtm [py/polluting-import]

@@ -12,6 +12,12 @@ from spatialmath.base.types import *
 from spatialmath.baseposelist import BasePoseList
 import warnings
 
+#
+# disable (or enable again, cause default is off) primitive checks
+#
+from spatialmath.base import use_checks
+
+
 _eps = np.finfo(np.float64).eps
 
 # ======================================================================== #
@@ -305,12 +311,12 @@ class Line3(BasePoseList):
         if w is None:
             # zero or one arguments passed
             if super().arghandler(v, convertfrom=(SE3,)):
-                if check and not base.iszero(np.dot(self.v, self.w)):
+                if (use_checks and check) and not base.iszero(np.dot(self.v, self.w)):
                     raise ValueError("invalid Plucker coordinates")
                 return
 
         if base.isvector(v, 3) and base.isvector(w, 3):
-            if check and not base.iszero(np.dot(v, w)):
+            if (use_checks and check) and not base.iszero(np.dot(v, w)):
                 raise ValueError("invalid Plucker coordinates")
             self.data = [np.r_[v, w]]
 

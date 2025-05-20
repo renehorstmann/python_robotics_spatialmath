@@ -1,5 +1,11 @@
 # print("in spatialmath/__init__")
 
+
+#
+# disable (or enable again, cause default is off) primitive checks
+#
+from spatialmath.base import use_checks
+
 from spatialmath.pose2d import SO2, SE2
 from spatialmath.pose3d import SO3, SE3
 from spatialmath.baseposematrix import BasePoseMatrix
