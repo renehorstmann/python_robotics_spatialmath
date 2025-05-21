@@ -19,7 +19,6 @@ from collections.abc import Iterable
 import math
 import numpy as np
 
-from spatialmath import use_checks
 from spatialmath.base.argcheck import getunit, getvector, isvector, isscalar, ismatrix
 from spatialmath.base.vectors import (
     unitvec,
@@ -50,6 +49,11 @@ from spatialmath.base.animate import Animate
 import spatialmath.base.symbolic as sym
 
 from spatialmath.base.types import *
+
+#
+# disable (or enable again, cause default is off) primitive checks
+#
+from spatialmath.base import use_checks
 
 _eps = np.finfo(np.float64).eps
 
